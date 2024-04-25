@@ -71,9 +71,10 @@
 
 <body>
     <header>
-        <h1>倒计时1.0</h1>
+        <h1>倒计时1.1</h1>
     </header>
     <main>
+       
         <section>
             <div class="input">
                 <p>请选择倒计时的时间点</p>
@@ -103,7 +104,7 @@
         </section>
         <section>
             <img class="clock" id="endImage" src="./img/clock1.jpg" style="display: none;" />
-        </section>       
+        </section>
     </main>
     <footer>
         <p style="color:darkslategray;text-align:center">Copyright © 2024 My Clock | </p>
@@ -183,6 +184,17 @@
             }
         })        
     </script>
+     <div style="display: none;">
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-VTSECLCSQG"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+
+            gtag('config', 'G-VTSECLCSQG');
+        </script>
+    </div>
 </body>
 
 </html>
