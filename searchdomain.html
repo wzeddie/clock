@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search For a Domain Name</title>
+    <style>
+        body {
+            /* 默认浏览器会有间隙，需要赋值为空 */
+            padding: 0;
+            margin: 0;
+        }
+
+        header {
+            background-color: rgb(35, 164, 234);
+            width: 100%;
+            /* 默认标签高度0，如果不设置，则无法显示背景色 */
+            height: 80px;
+            text-align: center;
+        }
+
+        section {
+            font-family: 'Arial', sans-serif;
+            background-color: #94bdc5;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .input {
+            border: 1px solid;
+            background-color: rgb(44, 153, 196);
+            text-align: center;
+            margin: 5px;
+
+        }
+
+        .show {
+            border: 1px solid;
+            background-color: rgb(143, 95, 188);
+            text-align: center;
+            margin: 2%;
+        }
+
+        p {
+            padding: 15px;
+            font-size: larger;
+            color: white;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <h1>域名信息查询</h1>
+        <script async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7801648526886850"
+            crossorigin="anonymous"></script>
+    </header>
+    <main>
+        <section>
+            <div class="input">
+                <p style="margin-bottom:5px ;">请输入要查询的域名</p>
+                <form id="myForm">
+                    <label for="name">like:www.bing.com</label><br>
+                    <input type="text" id="domainname" name="name" required minlength="4" maxlength="18"
+                        size="20" /><br>
+                    <button type="button" id="searchdomain" style="margin: 30px;">查询域名信息</button>
+                </form>
+            </div>
+        </section>
+        <section>
+            <img class="clock" id="endImage" src="./img/clock1.jpg" style="display: none;" />
+        </section>
+    </main>
+    <footer>
+        <p style="color:darkslategray;text-align:center">Copyright © 2024 |Search For Domain | </p>
+    </footer>
+    <script>
+        //获取页面元素的值
+        var domainname = document.getElementById('domainname');
+        var domainname_value = domainname.value//在加载的时候，可以不用获取值，因为此时为空
+        var searchdomain = document.getElementById('searchdomain');
+        //测试，打印h获取元素值
+        console.log(domainname, searchdomain);
+        //添加事件，查询
+        searchdomain.addEventListener('click', search_send)
+        function search_send() {
+            var domainname_value = domainname.value//必须在函数内重新获取，不然是为空。
+            //根据.字段对输入值进行拆分，输出为字符串数组形式
+            var domainParts = domainname_value.split('.');
+
+            console.log('点击查询按钮', domainname_value, domainParts);
+            //输入最少为xxx.xxx.格式
+            if (domainParts.length > 2) {
+                // 组合顶级域和第二级域作为后缀
+                var suffix = domainParts.slice(-2).join('.');
+                // 其余部分为域名名称
+                var name = domainParts.slice(0, -2).join('.');
+                console.log('域名名称: ' + name);
+                console.log('域名后缀: ' + suffix);
+            } else {
+                console.log('输入的域名格式不正确');
+            }
+        }
+        //         <!-- 用户可以输入域名，之后点击查询按钮，——完成
+        // 向 nodejs 后端发一个查询请求，后端校验格式，——js向后端发送请求有哪些方法，不调用第三方库的话
+        //原生方法使用<form>标签的原生提交：
+//使用submit()方法：
+//使用Node.js的http或https模块（在服务端）：
+//发送对象网站：https://whois.freeaiapi.xyz/?name=qiuyumi&suffix=com 
+        // 后端拆分域名 name 和 suffix ，向 whois 接口发送请求，
+        // 获取返回的 json 信息，返回给前端，
+        // 前端解析后，显示域名未注册，或者已注册，及注册时间，whois原始信息等。
+        //   ->
+    </script>
+    <div style="display: none;">
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-VTSECLCSQG"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+            gtag('config', 'G-VTSECLCSQG');
+        </script>
+    </div>
+</body>
+
+</html>
